@@ -19,6 +19,7 @@ A machine learning-powered web application that detects phishing URLs using adva
 ## 🎯 Demo
 
 Enter any URL and get instant feedback:
+
 - ✅ **Safe**: URL appears legitimate
 - ⚠️ **Phishing**: URL shows suspicious characteristics
 
@@ -32,28 +33,32 @@ Enter any URL and get instant feedback:
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/unanimousaditya/Phishing-URL-Detector.git
    cd Phishing-URL-Detector
    ```
 
 2. **Create a virtual environment** (recommended)
+
    ```bash
    python -m venv .venv
-   
+
    # Windows
    .venv\Scripts\activate
-   
+
    # macOS/Linux
    source .venv/bin/activate
    ```
 
 3. **Install dependencies**
+
    ```bash
    pip install -r requirements.txt
    ```
 
 4. **Run the application**
+
    ```bash
    python app.py
    ```
@@ -70,19 +75,22 @@ Enter any URL and get instant feedback:
 The system analyzes multiple aspects of a URL:
 
 #### 1. **URL-Based Features**
+
 - URL length and complexity
-- Number of special characters (@, -, _, etc.)
+- Number of special characters (@, -, \_, etc.)
 - Presence of IP address
 - HTTPS usage
 - Suspicious keywords
 
 #### 2. **Domain-Based Features**
+
 - Domain age and registration length
 - DNS record analysis
 - WHOIS information
 - Domain rank (Google Page Rank)
 
 #### 3. **Content-Based Features**
+
 - Page title and meta information
 - Number of external links
 - Presence of forms (especially password/email fields)
@@ -90,6 +98,7 @@ The system analyzes multiple aspects of a URL:
 - Redirect behavior
 
 #### 4. **HTML/JavaScript Features**
+
 - Right-click disabled
 - Pop-up windows
 - Hidden elements
@@ -111,7 +120,7 @@ The model is automatically trained on first run if not present, and saved as `pi
 
 - **Backend**: Flask 2.0.2
 - **ML Library**: scikit-learn 1.7.2
-- **Feature Extraction**: 
+- **Feature Extraction**:
   - BeautifulSoup4 (HTML parsing)
   - python-whois (WHOIS lookups)
   - googlesearch-python (rank checking)
@@ -147,7 +156,7 @@ Phishing-URL-Detector/
 - **Modern Dark Theme**: Easy on the eyes with purple accent colors
 - **Smooth Animations**: Fade-in effects and animated transitions
 - **Responsive Design**: Works on desktop, tablet, and mobile
-- **Visual Feedback**: 
+- **Visual Feedback**:
   - Animated shield icon
   - Color-coded results (green for safe, red for phishing)
   - Bounce/shake animations for results
@@ -157,6 +166,7 @@ Phishing-URL-Detector/
 ## 📈 Model Performance
 
 The model is trained on a balanced dataset with:
+
 - **Total Samples**: 11,054 URLs
 - **Features**: 30 carefully engineered features
 - **Model Type**: Gradient Boosting Classifier
@@ -180,6 +190,7 @@ export FLASK_ENV=production
 ### Model Retraining
 
 To retrain with your own data:
+
 1. Replace `phishing.csv` with your dataset (must have 30 features + class column)
 2. Delete `pickle/model_new.pkl`
 3. Run `python app.py`
@@ -216,6 +227,7 @@ CMD ["python", "app.py"]
 ```
 
 Build and run:
+
 ```bash
 docker build -t phishing-detector .
 docker run -p 5000:5000 phishing-detector
@@ -238,6 +250,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Author
 
 **Aditya**
+
 - GitHub: [@unanimousaditya](https://github.com/unanimousaditya)
 
 ## 🙏 Acknowledgments
