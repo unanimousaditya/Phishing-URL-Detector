@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AI-powered phishing URL detection to keep you safe online"
+    />
+    <meta
+      name="keywords"
+      content="phishing url,phishing,cyber security,machine learning,url scanner,security"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link href="static/styles.css" rel="stylesheet" />
+    <title>Phishing URL Detector - Stay Safe Online</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Hero Section -->
+      <div class="hero">
+        <div class="icon-wrapper">
+          <i class="fas fa-shield-alt shield-icon"></i>
+        </div>
+        <h1 class="main-title">Phishing URL Detector</h1>
+        <p class="subtitle">AI-powered protection against malicious websites</p>
+      </div>
+
+      <!-- Main Card -->
+      <div class="card">
+        <div class="card-body">
+          <div class="input-section">
+            <h2 class="section-title">
+              <i class="fas fa-link"></i>
+              Check URL Safety
+            </h2>
+
+            <form action="/" method="post" class="url-form">
+              <div class="input-group">
+                <div class="input-icon">
+                  <i class="fas fa-globe"></i>
+                </div>
+                <input
+                  type="url"
+                  class="url-input"
+                  name="url"
+                  id="url"
+                  placeholder="Enter URL to scan (e.g., https://example.com)"
+                  required
+                />
+              </div>
+              <button class="scan-button" type="submit">
+                <i class="fas fa-search"></i>
+                Scan URL
+              </button>
+            </form>
+          </div>
+
+          <!-- Results Section -->
+          <div class="results-section" id="resultsSection">
+            <div class="result-card" id="resultCard">
+              <div class="result-header">
+                <h3 class="result-title">Scan Results</h3>
+                <div class="analyzed-url">
+                  <i class="fas fa-external-link-alt"></i>
+                  <a href="{{ url }}" target="_blank" rel="noopener noreferrer"
+                    >{{ url }}</a
+                  >
+                </div>
+              </div>
+
+              <div class="result-content">
+                <div class="safety-badge" id="safetyBadge">
+                  <div class="badge-icon" id="badgeIcon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="badge-text">
+                    <h3 id="prediction" class="prediction-text"></h3>
+                    <p class="confidence-text" id="confidenceText"></p>
+                  </div>
+                </div>
+
+                <div class="action-buttons">
+                  <button
+                    class="btn-safe"
+                    id="button1"
+                    onclick="window.open('{{url}}')"
+                    target="_blank"
+                  >
+                    <i class="fas fa-check"></i>
+                    Continue to Website
+                  </button>
+                  <button
+                    class="btn-danger"
+                    id="button2"
+                    onclick="window.open('{{url}}')"
+                    target="_blank"
+                  >
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Proceed with Caution
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-brain"></i>
+          <h3>AI-Powered</h3>
+          <p>Machine learning detection</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-bolt"></i>
+          <h3>Real-Time</h3>
+          <p>Instant analysis results</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Secure</h3>
+          <p>Privacy-focused scanning</p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>
+          <i class="fas fa-code"></i>
+          Powered by Machine Learning | Stay Safe Online
+        </p>
+      </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let x = "{{xx}}";
+        const resultsSection = document.getElementById("resultsSection");
+        const resultCard = document.getElementById("resultCard");
+        const safetyBadge = document.getElementById("safetyBadge");
+        const badgeIcon = document.getElementById("badgeIcon");
+        const prediction = document.getElementById("prediction");
+        const confidenceText = document.getElementById("confidenceText");
+        const button1 = document.getElementById("button1");
+        const button2 = document.getElementById("button2");
+
+        if (x !== "-1" && x !== "") {
+          let num = x * 100;
+          if (0 <= x && x < 0.5) {
+            num = 100 - num;
+          }
+          let txtx = num.toFixed(1);
+
+          // Show results section with animation
+          resultsSection.style.display = "block";
+          setTimeout(() => {
+            resultCard.classList.add("show");
+          }, 100);
+
+          if (x <= 1 && x >= 0.5) {
+            // Safe website
+            safetyBadge.classList.add("safe");
+            badgeIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+            prediction.innerHTML = "Safe Website";
+            confidenceText.innerHTML = txtx + "% confidence level";
+            button1.style.display = "flex";
+            button2.style.display = "none";
+          } else if (0 <= x && x < 0.5) {
+            // Unsafe website
+            safetyBadge.classList.add("unsafe");
+            badgeIcon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+            prediction.innerHTML = "Potentially Dangerous";
+            confidenceText.innerHTML = txtx + "% risk detected";
+            button1.style.display = "none";
+            button2.style.display = "flex";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
